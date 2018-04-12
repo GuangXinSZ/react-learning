@@ -1,0 +1,6 @@
+1.React 安装
+ npm init  //cnpm init
+ 2.安装依赖
+ cnpm install react
+  cnpm install react-demo
+   cnpm install babel-standalone -S

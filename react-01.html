@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.js"></script>
+</head>
+<body>
+    <div id="example">
+
+    </div>
+    <script type="text/babel">
+    var flag = false;
+    var div1={
+        fontSize: '20px',
+        color: '#f60'
+    }
+        ReactDOM.render(
+           <ul className="lists-ul">
+               <li style={div1}>{flag==true?'11': '22'}</li>
+               <li>22</li>
+               <li>33</li>
+           </ul>,
+            document.getElementById('example')
+        )
+    </script>
+</body>
+</html>
