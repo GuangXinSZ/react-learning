@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+     <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+class HelloMessage extends React.Component{
+/*constructor构造函数 state不可以改变的值*/
+    constructor(props){
+        super(props)
+        this.state = {
+            flag: true
+        }
+        /*先定义一个方法*/
+        this.isClick = this.bindClick.bind(this)
+    }
+    /*实现方法*/
+    bindClick(){
+    /*this.setState 类似于小程序的this.setData*/
+        this.setState({
+            flag: !this.state.flag
+        })
+    }
+    render(){
+        return (
+        /* 绑定事件的方法 */
+            <button onClick={this.isClick}>
+                {this.state.flag ? '打开':'关闭'}
+            </button>
+        )
+    }
+}
+    ReactDOM.render(
+        <HelloMessage />,
+        document.getElementById('example')
+    )
+</script>
+</body>
+</html>
