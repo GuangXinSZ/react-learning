@@ -29,7 +29,7 @@ class HelloMessage extends React.Component{
     }
     render(){
         return (
-        /* 绑定事件的方法 */
+        /* 绑定事件的方法 onClick={()=>this.isClick()}*/
             <button onClick={this.isClick}>
                 {this.state.flag ? '打开':'关闭'}
             </button>
