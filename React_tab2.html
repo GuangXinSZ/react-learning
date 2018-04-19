@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.js"></script>
+    <style>
+        li{list-style: none;}
+        .listBack{
+            color:red;
+            width: 30%;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            cursor: pointer;
+        }
+        .listBack li{
+            width: 33%;
+            padding:10px;
+            height: 100%;
+        }
+        .active{
+            color:white;
+            background: cornflowerblue;
+        }
+        .clearFix{
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+    
+    class HelloMessage extends React.Component{
+        constructor(props){
+            super(props);
+            /*此处的this.state值是不可以改变的*/
+            this.state = {
+                tabs: [
+                    {tabName: '新闻',id:1},
+                    {tabName: '小哥哥', id: 2},
+                    {tabName: '关系', id: 3}
+                ],
+                currentIndex: 1,
+            };
+        }
+        /*改变index值*/
+        tabChoiced(id){
+          this.setState({
+              currentIndex: id
+          })
+        }
+        render(){
+            var that = this;
+            var tabList = this.state.tabs.map( function(item,index){
+                /* 绑定事件 得改变当前的index值 添加class */
+                return <li 
+                className= {item.id == that.state.currentIndex ? 'active': ''} 
+                 key={index} 
+                 onClick={this.tabChoiced.bind(that,item.id)}
+                 >{item.tabName}</li>
+                }.bind(that))
+            return (
+                <div>
+                    <ul className="listBack">
+                    /*当做一个index*/
+                            {tabList}
+                    </ul>
+                    <div className="clearFix">
+                       {
+                           this.state.tabs.map((item,index)=>{
+                               return (
+                                item.id == that.state.currentIndex ? <p key={index}>{item.tabName}</p> : ''
+                               )
+                           })
+                       }
+                    </div>
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(
+        <HelloMessage />,
+        document.getElementById('example')
+    )
+    </script>
+</body>
+</html>
