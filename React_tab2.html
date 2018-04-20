@@ -60,8 +60,8 @@
             var tabList = this.state.tabs.map( function(item,index){
                 /* 绑定事件 得改变当前的index值 添加class */
                 return <li 
-                /*自动切换宽度*/
-                style={{ width: this.state.tabs.length + '%' }}
+                /*自动切换宽度 平均分需要用100/length*/
+                style={{ width:100/ this.state.tabs.length + '%' }}
                 className= {item.id == that.state.currentIndex ? 'active': ''} 
                  key={index} 
                  onClick={this.tabChoiced.bind(that,item.id)}
