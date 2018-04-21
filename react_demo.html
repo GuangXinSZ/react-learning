@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+      <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+    class HelloMessage extends React.Component{
+        constructor(props,content){
+            super(props,content)
+            this.state = {
+                opacity: 1.0
+            }
+        }
+        componentDidMount(){
+            this.timer = setInterval(()=>{
+                var opacity1 = this.state.opacity;
+                opacity1 -=0.05;
+                if(opacity1 < 0.1){
+                    opacity1 = 1.0
+                }
+                this.setState({
+                    opacity: opacity1
+                });
+            },100)
+        }
+        render(){
+            return (
+                <div style={{opacity: this.state.opacity}}>
+                    {this.props.name}
+                </div>
+            )
+        }
+    }
+    var data = {
+        name: 'hello world'
+    }
+        ReactDOM.render(
+            <HelloMessage name={data.name} />,
+            document.getElementById('example')
+        )
+    </script>
+</body>
+</html>
