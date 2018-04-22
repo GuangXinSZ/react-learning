@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.js"></script>
+    <style>
+        li {
+            list-style: none;
+        }
+
+        .listBack {
+            color: red;
+            width: 60%;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .listBack li {
+            padding: 10px;
+            height: 100%;
+
+        }
+
+        .active {
+            color: white;
+            background: cornflowerblue;
+        }
+
+        .clearFix {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+       function tick() {
+       const element = (
+        <div>
+        <h1>hello world!</h1>
+        <h2>It is {new Date().toLocaleTimeString()}</h2>
+        </div>
+        )
+        ReactDOM.render(
+            element,
+            document.getElementById('example')
+        )
+       }
+       setInterval(tick,1000)
+    </script>
+</body>
+
+</html>
