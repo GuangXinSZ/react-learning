@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+     class Hello extends React.Component{
+         constructor(props, context) {
+             super(props, context);
+             this.state = {
+                 value: '',
+                 male: true
+             }
+         }
+         hander(e){
+             this.setState({
+                 value: e.target.value
+             })
+         };
+         handeRadio(e){
+             var male = e.target.value == 'man' ? true : false;
+             this.setState({
+                 male: male
+             })
+         }
+         render(){
+             return (
+                 <div>
+                    <input type="text"  defaultValue="123" />
+                    <input value={ this.state.value } onChange={ (event)=>this.hander(event) } />
+                    <p> { this.state.value } </p>
+                    <input type="radio" name="radioName" checked={ this.state.male } value="man" onChange={ (event)=>this.handeRadio(event) } />
+                    <input type="radio" name="radioName" checked={ !this.state.male } value="woman" onChange={ (event)=>this.handeRadio(event) }  />
+                 </div>
+             )
+         }
+     }
+        ReactDOM.render(
+            <Hello />,
+            document.getElementById('example')
+        )
+        
+    </script>
+</body>
+</html>
