@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/react/umd/react.development.js"></script>
+    <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="../node_modules/babel-standalone/babel.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+    /*父组件*/
+    class ParentList extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {
+                data: 'A',
+                color: 'red'
+            }
+        }
+        change(data){
+            this.setState({
+                data: data,
+            })
+        }
+        render(){
+            /* 传值 <ChildList text="hello" name={this.state.name} /> */
+            /* 添加bind.(this) 绑定固定的值 */
+            var that = this;
+            return (
+               <div>
+                <ChildA  dataChange={this.change.bind(this) }  data={this.state.data}  />
+                <ChildB  data={this.state.data} />
+               </div>
+            )
+        }
+    }
+     
+    /*子组件第一个必须大写*/
+    class ChildA extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {
+                address: '1111'
+            }
+        }
+        render(){
+            return (
+              <div>
+                <button onClick={(event)=> this.props.dataChange('B')}>点我</button>
+                <p>{ this.props.data }</p>
+              </div>
+            )
+        }
+    }
+    /*孙组建*/
+    class ChildB extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {
+                address: '1111'
+            }
+        }
+        render(){
+            return(
+                <div>B:{this.props.data}</div>
+            )
+            
+        }
+    }
+    ReactDOM.render(
+        /* 注意传值的的位置 */
+        <ParentList />,
+        document.getElementById('example')
+    )
+    </script>
+</body>
+</html>
