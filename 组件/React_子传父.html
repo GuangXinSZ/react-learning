@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/react/umd/react.development.js"></script>
+    <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="../node_modules/babel-standalone/babel.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+    /*父组件*/
+    class ParentList extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {
+                data: 'A',
+                color: 'red',
+                checked: true
+            }
+        }
+        childchange(data){
+            this.setState({
+                checked: data
+            })
+        }
+        render(){
+            var that = this;
+            var isChecked = this.state.checked ? 'yes' : 'no';
+            /*回调*/
+            return (
+               <div>
+               <div>父组件:{ isChecked }</div>
+                <ChildList text="parent" checked={this.state.checked}
+                callbackParent={ this.childchange.bind(this) }
+                 /> 
+               </div>
+            )
+        }
+    }
+    /*子组件第一个必须大写*/
+    class ChildList extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {
+                /*这样获取父传过来的值*/
+                checked: props.checked
+            }
+        }
+        change(e){
+            var NewState = !this.props.checked;
+            this.setState({
+                checked: NewState
+            })
+            /* 这样回调父 改变子的时候从而改变父 */
+            this.props.callbackParent(NewState);
+        }
+        render(){
+            return (
+              <div>
+               <p>{ this.props.text }</p>
+               <input type="checkbox" checked={ this.props.checked } onChange={(event)=> this.props.callbackParent(false) } value="改变一个回调" />
+               <input type="checkbox" checked={ this.props.checked } onChange={(event)=> this.change(event) } value="改变一个回调" />
+              </div>
+            )
+        }
+    }
+   
+    ReactDOM.render(
+        /* 注意传值的的位置 */
+        <ParentList />,
+        document.getElementById('example')
+    )
+    </script>
+</body>
+</html>
