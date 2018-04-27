@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+     class Hello extends React.Component{
+         constructor(props, context) {
+             super(props, context);
+             this.state = {
+                 name: 'lili',
+                 password: '',
+                 address: ''
+             }
+         }
+         handerChange(){
+            
+         };
+         handleClick(e){
+             var target = e.target;
+             var name = target.name;
+
+             this.setState({
+                 [name]: e.target.value
+             })
+             
+         };
+         handleSubmit(){
+             alert(JSON.stringify(this.state))
+         }
+         render(){
+             return (
+                <div>
+                    <div>
+                    <label>姓名: </label>
+                        <input type="text"
+                        name="name" 
+                        value={ this.state.name }
+                        onChange={ (event)=>this.handleClick(event) } 
+                     />
+                    </div>
+                    <div>
+                    <label>密码: </label>
+                        <input type="text"
+                        name="password" 
+                        value={ this.state.password }
+                        onChange={ (event)=>this.handleClick(event) } 
+                     />
+                    </div>
+                    <div>
+                        <label>地址: </label>
+                        <input type="text"
+                        name="address" 
+                        value={ this.state.address }
+                        onChange={ (event)=>this.handleClick(event) } 
+                     />
+                    </div>
+                    <input type="button" onClick={ ()=>this.handleSubmit() } value="提交" />
+                </div>
+             )
+         }
+     }
+        ReactDOM.render(
+            <Hello />,
+            document.getElementById('example')
+        )
+
+    </script>
+</body>
+</html>
