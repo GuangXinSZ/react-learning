@@ -18,3 +18,7 @@
 #加油
 
 #生病了
+
+# 每天坚持一点
+
+#cnpm install -g create-app-app
