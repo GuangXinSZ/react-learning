@@ -22,3 +22,5 @@
 # 每天坚持一点
 
 #cnpm install -g create-app-app
+
+#最近都忙着改bug
