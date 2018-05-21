@@ -8,6 +8,8 @@ class Counter extends Component{
         this.setState = {
 
         }
+        this.incrementAsync = this.incrementAsync.bind(this)
+        this.incrementIfOdd = this.incrementIfOdd.bind(this)
     }
     incrementIfOdd(){
         if(this.props.value % 2 == 0){
