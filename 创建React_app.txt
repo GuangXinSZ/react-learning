@@ -1,0 +1,75 @@
+cnpm install -g create-react-app
+create-react-app myself
+cd myself
+cnpm statr
+
+/*解除绑定*/
+cnpm run eject
+/*打包上线*/
+cnpm run build
+
+/*下载react--redux*/
+cnpm install react-redux --save-dev
+
+cnpm install redux --save-dev
+
+/*删除node-module*/
+rm -rf node_modules
+
+/*安装Ant*/
+cnpm install antd --save
+/*安装yarn*/
+/*npm install -g create-react-app yarn*/
+/*创建项目*/
+create-react-app antd-demo
+cd antd-demo
+/*启动项目我们用*/ 
+yarn start
+/*引入antd*/
+接下来我们使用yarn
+cnpm install antd --save;
+
+/*引入 react-app-rewired 并修改 package.json 里的启动配置。*/
+yarn add react-app-rewired --dev
+
+/*添加package.json配置*/
+"scripts": {
+-   "start": "react-scripts start",
++   "start": "react-app-rewired start",
+-   "build": "react-scripts build",
++   "build": "react-app-rewired build",
+-   "test": "react-scripts test --env=jsdom",
++   "test": "react-app-rewired test --env=jsdom",
+}
+然后在项目根目录创建一个 config-overrides.js 用于修改默认配置。
+module.exports = function override(config, env) {
+  // do stuff with the webpack config...
+  return config;
+};
+/* babel-plugin-import*/
+yarn add babel-plugin-import --dev
+/*修改config-overrides.js文件*/
++ const { injectBabelPlugin } = require('react-app-rewired');
+
+  module.exports = function override(config, env) {
++   config = injectBabelPlugin(['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }], config);
+    return config;
+  };
+/*修改src/App.js*/
+
+import { Button } from 'antd'
+/*安装less*/
+yarn add create-app-rewire-less --dev
+
+/*添加配置*/
+  const { injectBabelPlugin } = require('react-app-rewired');
++ const rewireLess = require('react-app-rewire-less');
+
+  module.exports = function override(config, env) {
+-   config = injectBabelPlugin(['import', { libraryName: 'antd', style: 'css' }], config);
++   config = injectBabelPlugin(['import', { libraryName: 'antd', style: true }], config);
++   config = rewireLess.withLoaderOptions({
++     modifyVars: { "@primary-color": "#1DA57A" },
++   })(config, env);
+    return config;
+  };
