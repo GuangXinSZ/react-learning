@@ -43,6 +43,7 @@ class Main extends Component {
     <Router>
       <div className="App">
             <ul>
+                 <div> hello world </div>
                 <li><Link to={"/home/" + 123}>首页</Link></li>
                 <li><Link to="/other">其它页</Link></li>
                 <li><Link to="/info">列表</Link></li>
