@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './Header'
 import ProtoType from './ProtoType'
+import Axios from './Axios'
 import '../assets/css/home.css'
 
 class Home extends React.Component {
@@ -9,7 +10,7 @@ class Home extends React.Component {
 
     this.state = {
       list: ['111', '222', '333'],
-      num: '22',
+      num: 22,
       name: 'LiuGuangXin',
       title: '新闻页',
       recoredList: [
@@ -60,6 +61,7 @@ class Home extends React.Component {
 
     return (
       <div>
+        <Axios></Axios>
         <div>{this.state.name}</div>
         <ul>
           { listResult }
