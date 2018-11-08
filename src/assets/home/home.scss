@@ -1,0 +1,53 @@
+.container {
+  width: 96vw;
+  margin: 0 2vw;
+
+  .header {
+    margin-top: 1.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .title {
+      background: black;
+      color: white;
+      width: 5rem;
+      height: 2.7rem;
+      text-align: center;
+      line-height: 2.7rem;
+      border-radius: 7%;
+      font-size: 1rem;
+    }
+
+    .include {
+      color: red;
+      margin-top: 0.9rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  .orders {
+    width: 92%;
+    margin: .8rem 4%;
+
+    .order-list {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+
+      .item {
+        margin-top: 0.5rem;
+        width: 20%;
+        height: 3.2rem;
+        line-height: 3.2rem;
+        text-align: center;
+        border: 1px solid #ccc;
+        border-radius: 7%;
+        background: white;
+      }
+    }
+  }
+}

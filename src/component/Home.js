@@ -2,7 +2,6 @@ import React from 'react'
 import Header from './Header'
 import ProtoType from './ProtoType'
 import Axios from './Axios'
-import '../assets/css/home.css'
 
 class Home extends React.Component {
   constructor () {
