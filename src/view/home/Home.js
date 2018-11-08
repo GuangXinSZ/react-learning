@@ -8,6 +8,7 @@ class Home extends React.Component {
     super(props)
 
     this.state = {
+      currentIndex: null,
       orderList: []
     }
   }
@@ -27,7 +28,10 @@ class Home extends React.Component {
   }
 
   switchMeals = (key) => {
-    console.log(key)
+  
+    this.setState({
+      currentIndex: key
+    })
   }
 
   componentDidMount () {
@@ -49,7 +53,7 @@ class Home extends React.Component {
             {
               this.state.orderList.map((item, key) => {
                 return (
-                  <li key={key} className="item" onClick={this.switchMeals.bind(this, key)}>{item.meals}人</li>
+                  <li key={key} className={`item ${key === this.state.currentIndex ? 'bg' : ''}`} onClick={this.switchMeals.bind(this, key)}>{item.meals}人</li>
                 )
               })
             }
