@@ -1,6 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import api from '../../server/api'
-import _ from 'lodash'
 import '../../assets/home/home.scss'
 
 class Home extends React.Component {
@@ -9,7 +9,8 @@ class Home extends React.Component {
 
     this.state = {
       currentIndex: null,
-      orderList: []
+      orderList: [],
+      selectOrder: null
     }
   }
 
@@ -25,19 +26,23 @@ class Home extends React.Component {
   }
 
   startOrder = () => {
+    if (this.state.selectOrder === null) {
+      alert("您还未选择任何套餐！")
+      return
+    }
+    this.context.router.history.push('/orderList?id=11')
   }
 
-  switchMeals = (key) => {
-  
+  switchMeals = (key, item) => {
     this.setState({
-      currentIndex: key
+      currentIndex: key,
+      selectOrder: item
     })
   }
 
   componentDidMount () {
     this.getOrderList()
   }
-
 
   render () {
     return (
@@ -53,15 +58,22 @@ class Home extends React.Component {
             {
               this.state.orderList.map((item, key) => {
                 return (
-                  <li key={key} className={`item ${key === this.state.currentIndex ? 'bg' : ''}`} onClick={this.switchMeals.bind(this, key)}>{item.meals}人</li>
+                  <li key={key} className={`item ${key === this.state.currentIndex ? 'bg' : ''}`} onClick={this.switchMeals.bind(this, key, item)}>{item.meals}人</li>
                 )
               })
             }
           </ul>
         </div>
+        <div className="start-order" onClick={this.startOrder}>
+          开始点菜
+        </div>
       </div>
     )
   }
+}
+
+Home.contextTypes = {
+  router: PropTypes.object
 }
 
 export default Home
