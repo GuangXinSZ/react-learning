@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Home from './view/home/Home'
-import OrderList from './view/index/OrderList'
+import Index from './view/index/Index'
 
 class App extends Component {
   render () {
@@ -10,7 +10,7 @@ class App extends Component {
         <Router>
           <header>
             <Route exact path="/" component={Home}></Route>
-            <Route path="/orderList/:id" component={OrderList}></Route>
+            <Route path="/index/" component={Index}></Route>
           </header>
         </Router>
       </div>

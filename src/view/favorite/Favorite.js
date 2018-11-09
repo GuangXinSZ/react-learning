@@ -1,6 +1,6 @@
 import React from 'react'
 
-class OrderList extends React.Component {
+class Favorite extends React.Component {
   constructor () {
     super()
 
@@ -10,11 +10,11 @@ class OrderList extends React.Component {
 
   render () {
     return (
-      <div>
-        hello world
+      <div className="container">
+        最爱
       </div>
     ) 
   }
 }
 
-export default OrderList
+export default Favorite

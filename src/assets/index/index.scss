@@ -1,0 +1,23 @@
+.container {
+
+  .head {
+    width: 100%;
+    margin-top: 0.5rem;
+
+    .menu-list {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+
+      .item {
+        width: 30%;
+        height: 3rem;
+        line-height: 3rem;
+        font-size: 0.9rem;
+        text-align: center;
+        background: white;
+        border-radius: 10%;
+      }
+    }
+  }
+}

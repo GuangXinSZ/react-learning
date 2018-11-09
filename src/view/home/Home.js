@@ -30,7 +30,7 @@ class Home extends React.Component {
       alert("您还未选择任何套餐！")
       return
     }
-    this.context.router.history.push('/orderList?id=11')
+    this.context.router.history.push('/index/')
   }
 
   switchMeals = (key, item) => {
