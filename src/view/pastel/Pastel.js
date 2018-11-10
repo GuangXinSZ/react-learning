@@ -8,10 +8,16 @@ class Pastel extends React.Component {
     }
   }
 
+  handleShop = () => {
+    console.log('123')
+  }
+
   render () {
     return (
       <div className="container">
-        点菜1111111111
+       <div className="block">
+        <button onClick={this.handleShop}>111</button>
+       </div>
       </div>
     ) 
   }

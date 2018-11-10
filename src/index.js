@@ -2,11 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
+import { createStore } from './store/mini-redux';
+import { counter } from './store/index';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = createStore(counter);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
+function render() {
+  ReactDOM.render(<App store={store} />, document.getElementById('root'));
+}
+
+render();
+// 每次修改状态,从新渲染页面
+store.subscribe(render);
+
 serviceWorker.unregister();
