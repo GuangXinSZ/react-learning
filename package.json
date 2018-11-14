@@ -30,6 +30,7 @@
   ],
   "devDependencies": {
     "axios": "^0.18.0",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "react-redux": "^5.1.1"
   }
 }
