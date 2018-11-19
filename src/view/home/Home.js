@@ -10,7 +10,8 @@ class Home extends React.Component {
     this.state = {
       currentIndex: null,
       orderList: [],
-      selectOrder: null
+      selectOrder: null,
+      numberPeople: 0
     }
   }
 
@@ -36,7 +37,8 @@ class Home extends React.Component {
   switchMeals = (key, item) => {
     this.setState({
       currentIndex: key,
-      selectOrder: item
+      selectOrder: item,
+      numberPeople: item.meals
     })
   }
 
@@ -48,7 +50,7 @@ class Home extends React.Component {
     return (
       <div className="container">
         <div className="header">
-          <div className="title">用餐人数</div>
+          <div className="title">用餐人数<span className="num-people">{this.state.numberPeople}</span>人</div>
           <div className="include">
             请选择正确的用餐人数，小二马上给您送餐具。
           </div>
