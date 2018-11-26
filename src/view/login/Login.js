@@ -24,6 +24,7 @@ class Login extends React.Component {
     try {
       let res = await utils.checkFrom(this.props.form)
       if (res) {
+        console.log('123')
         this.context.router.history.push('/home')
       }
 
