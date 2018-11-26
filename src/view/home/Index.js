@@ -23,19 +23,26 @@ class Index extends React.Component {
           title: '首页',
           isMenu: true,
           children: [
-            {id: 1, value: 'hello', path: '/home/hot'}
+            {id: 1, value: '影片统计', path: '/home/hot'}
           ]
         },
-        {title: '民警管理', isMenu: false},
         {
-          title: '罪犯管理',  isMenu: false,
+          title: '用户',
+          isMenu: true,
+          children: [
+              {id: 2, value: '会员用户'},
+              {id: 3, value: '普通用户'}
+            ]
+          },
+        {
+          title: '电影分类',  isMenu: false,
           children: []
         },
         {
-          title: '系统配置',
+          title: '基本设置',
           isMenu: true,
           children: [
-            {id: 2,value: '基本查5询', path: '/home'}
+            {id: 4, value: '权限设置', path: '/home'}
           ]
         }
       ]
@@ -113,7 +120,7 @@ class Index extends React.Component {
                 )
               } else {
                 return (
-                  <SubMenu key="sub1" key={index} title={<span><Icon type="appstore" /><span>{item.title}</span></span>}>
+                  <SubMenu key={index} title={<span><Icon type="appstore" /><span>{item.title}</span></span>}>
                     <Menu.Item>暂无</Menu.Item>
                   </SubMenu>
                 )
