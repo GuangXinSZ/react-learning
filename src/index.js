@@ -5,6 +5,7 @@ import App from './App';
 import { createStore } from 'redux';
 import { counter } from './store/index';
 import * as serviceWorker from './serviceWorker';
+import 'antd/dist/antd.css';
 
 const store = createStore(counter);
 

@@ -1,0 +1,28 @@
+#components-form-demo-normal-login .login-form {
+  max-width: 300px;
+}
+#components-form-demo-normal-login .login-form-forgot {
+  float: right;
+}
+
+.login {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 20rem;
+  height: 20rem;
+  overflow: hidden;
+  padding: 2rem;
+  border: 0.05rem solid #cccccc;
+  border-radius: 8%;
+
+  .login-form {
+    .title {
+      text-align: center;
+      font-size: 1.2rem;
+    }
+  }
+}

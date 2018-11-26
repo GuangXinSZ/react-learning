@@ -29,6 +29,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "antd": "^3.10.9",
     "axios": "^0.18.0",
     "lodash": "^4.17.11",
     "react-redux": "^5.1.1"
