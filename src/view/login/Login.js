@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Icon, Input, Button, Checkbox } from 'antd'
+import { Form, Icon, Input, Button, Checkbox, message } from 'antd'
 import utils from '../../server/utils'
 import PropTypes from 'prop-types'
 // import { browserHistory } from 'react-router'
@@ -24,7 +24,7 @@ class Login extends React.Component {
     try {
       let res = await utils.checkFrom(this.props.form)
       if (res) {
-        console.log('123')
+        message.info('登录成功！')
         this.context.router.history.push('/home')
       }
 
