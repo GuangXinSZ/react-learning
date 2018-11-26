@@ -1,10 +1,10 @@
 import React from 'react'
-import { Menu, Icon, Row, Col, Tag } from 'antd'
-import {Route, Link} from 'react-router-dom'
+import { Menu, Icon, Tag } from 'antd'
+import { Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import Hot from '../hot/Hot'
-
+import '../../assets/home/home.scss'
 const SubMenu = Menu.SubMenu
 
 class Index extends React.Component {
@@ -68,7 +68,6 @@ class Index extends React.Component {
     })
 
     enable = true
-    
   }
 
   deleteTag = (item, e) => {
@@ -87,58 +86,58 @@ class Index extends React.Component {
   jump = (item, e) => {
     this.context.router.history.push(item.path)
   }
+
   render () {
     return (
-      <div>
-        <Row>
-          <Col span={4}>
-            <Menu
-              onClick={this.handleClick}
-              style={{ width: 150 }}
-              mode="inline"
-            >
-            {
-              this.state.menuList.map((item, index) => {
-                if (item.isMenu) {
-                  return (
-                    <SubMenu key={index} title={<span><Icon type="appstore" /><span>{item.title}</span></span>}>
-                      {
-                        item.children.map((el, key) => {
-                          return (
-                            <Menu.Item path={el.path} key={el.id}>{el.value}</Menu.Item>
-                          )
-                        })
-                      }
-                    </SubMenu>
-                  )
-                } else {
-                  return (
-                    <SubMenu key="sub1" key={index} title={<span><Icon type="appstore" /><span>{item.title}</span></span>}>
-                      <Menu.Item>暂无</Menu.Item>
-                    </SubMenu>
-                  )
-                }
-              })
-            }
-            </Menu>
-          </Col>
-          <Col span={19}>
-            {
-              this.state.historyList.map((item, index) => {
+      <div className="container">
+        <div className="left">
+          <Menu
+            className="menu"
+            onClick={this.handleClick}
+            style={{ width: 150 }}
+            mode="inline"
+          >
+          {
+            this.state.menuList.map((item, index) => {
+              if (item.isMenu) {
                 return (
-                  <Tag 
-                  closable 
-                  onClick={this.jump.bind(this, item)} 
-                  key={index} 
-                  onClose={this.deleteTag.bind(this, item)}>
-                  {item.title}
-                  </Tag>
+                  <SubMenu key={index} title={<span><Icon type="appstore" /><span>{item.title}</span></span>}>
+                    {
+                      item.children.map((el, key) => {
+                        return (
+                          <Menu.Item path={el.path} key={el.id}>{el.value}</Menu.Item>
+                        )
+                      })
+                    }
+                  </SubMenu>
+                )
+              } else {
+                return (
+                  <SubMenu key="sub1" key={index} title={<span><Icon type="appstore" /><span>{item.title}</span></span>}>
+                    <Menu.Item>暂无</Menu.Item>
+                  </SubMenu>
+                )
+              }
+            })
+          }
+          </Menu>
+        </div>
+        <div className="right">
+          {
+            this.state.historyList.map((item, index) => {
+              return (
+                <Tag 
+                closable 
+                onClick={this.jump.bind(this, item)} 
+                key={index} 
+                onClose={this.deleteTag.bind(this, item)}>
+                {item.title}
+                </Tag>
                 )
               })
             }
-            <Route path="/home/hot" component={Hot}></Route>
-          </Col>
-        </Row>
+          <Route path="/home/hot" component={Hot}></Route>
+        </div>
       </div>
     ) 
   }
