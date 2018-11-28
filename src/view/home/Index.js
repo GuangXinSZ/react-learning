@@ -21,6 +21,7 @@ class Index extends React.Component {
       menuList: [
         {
           title: '首页',
+          icon: 'github',
           isMenu: true,
           children: [
             {id: 1, value: '影片统计', path: '/home/hot'}
@@ -28,6 +29,7 @@ class Index extends React.Component {
         },
         {
           title: '用户',
+          icon: 'user', 
           isMenu: true,
           children: [
               {id: 2, value: '会员用户'},
@@ -35,14 +37,19 @@ class Index extends React.Component {
             ]
           },
         {
-          title: '电影分类',  isMenu: false,
-          children: []
+          title: '电影',
+          icon: 'fire',
+          isMenu: false,
+          children: [
+            {id: 4, value: '全部'}
+          ]
         },
         {
           title: '基本设置',
+          icon: 'setting',
           isMenu: true,
           children: [
-            {id: 4, value: '权限设置', path: '/home'}
+            {id: 5, value: '权限设置', path: '/home'}
           ]
         }
       ]
@@ -108,7 +115,7 @@ class Index extends React.Component {
             this.state.menuList.map((item, index) => {
               if (item.isMenu) {
                 return (
-                  <SubMenu key={index} title={<span><Icon type="appstore" /><span>{item.title}</span></span>}>
+                  <SubMenu key={index} title={<span><Icon type={item.icon} /><span>{item.title}</span></span>}>
                     {
                       item.children.map((el, key) => {
                         return (
@@ -120,7 +127,7 @@ class Index extends React.Component {
                 )
               } else {
                 return (
-                  <SubMenu key={index} title={<span><Icon type="appstore" /><span>{item.title}</span></span>}>
+                  <SubMenu key={index} title={<span><Icon type={item.icon} /><span>{item.title}</span></span>}>
                     <Menu.Item>暂无</Menu.Item>
                   </SubMenu>
                 )
