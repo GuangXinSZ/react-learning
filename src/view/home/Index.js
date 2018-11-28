@@ -58,21 +58,26 @@ class Index extends React.Component {
   }
 
   handleClick = (e) => {
-    if (e.item.props.path === undefined) {
-      return
-    }
+    if (e.item.props.path === undefined) { return }
+
     let enable = true
     let res = e.item.props.children
 
     // 第一次添加不需要循环
     if (this.state.historyList != null) {
-      this.state.historyList.forEach((item, index) => {
-        if (item.title === res) {
-          enable = false
-        }
-      })
+      let ret = _
+        .chain(this.state.historyList)
+        .map((o) => {
+          return o.title
+        })
+        .includes(res)
+        .value()
+
+      if (ret) {
+        enable = false
+      }
     }
-   
+
     if (!enable) { return }
     let list = this.state.historyList
 
