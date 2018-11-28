@@ -42,7 +42,7 @@ class Home extends React.Component {
     })
   }
 
-  componentDidMount () {
+  componentWillMount () {
     this.getOrderList()
   }
 
