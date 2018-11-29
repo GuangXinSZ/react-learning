@@ -3,8 +3,10 @@ import { Menu, Icon, Tag } from 'antd'
 import { Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
+import Head from '../header/Index'
 import Hot from '../hot/Hot'
 import '../../assets/home/home.scss'
+
 const SubMenu = Menu.SubMenu
 
 class Index extends React.Component {
@@ -40,7 +42,7 @@ class Index extends React.Component {
         {
           title: '电影',
           icon: 'fire',
-          isMenu: false,
+          isMenu: true,
           children: [
             {id: 4, value: '全部'}
           ]
@@ -146,42 +148,45 @@ class Index extends React.Component {
       })
 
     return (
-      <div className="container">
-        <div className="left">
-          <Menu
-            className="menu"
-            onClick={this.handleClick}
-            style={{ width: 150 }}
-            mode="inline"
-          >
-          {
-            this.state.menuList.map((item, index) => {
-              if (item.isMenu) {
-                return (
-                  <SubMenu key={index} title={<span><Icon type={item.icon} /><span>{item.title}</span></span>}>
-                    {
-                      item.children.map((el, key) => {
-                        return (
-                          <Menu.Item path={el.path} key={el.id}>{el.value}</Menu.Item>
-                        )
-                      })
-                    }
-                  </SubMenu>
-                )
-              } else {
-                return (
-                  <SubMenu key={index} title={<span><Icon type={item.icon} /><span>{item.title}</span></span>}>
-                    <Menu.Item>暂无</Menu.Item>
-                  </SubMenu>
-                )
-              }
-            })
-          }
-          </Menu>
-        </div>
-        <div className="right">
-          {this.state.isShowEnable ? tagList : ''}
-          <Route path="/home/hot" component={Hot}></Route>
+      <div>
+        <Head></Head>
+        <div className="container">
+          <div className="left">
+            <Menu
+              className="menu"
+              onClick={this.handleClick}
+              style={{ width: 150 }}
+              mode="inline"
+            >
+            {
+              this.state.menuList.map((item, index) => {
+                if (item.isMenu) {
+                  return (
+                    <SubMenu key={index} title={<span><Icon type={item.icon} /><span>{item.title}</span></span>}>
+                      {
+                        item.children.map((el, key) => {
+                          return (
+                            <Menu.Item path={el.path} key={el.id}>{el.value}</Menu.Item>
+                          )
+                        })
+                      }
+                    </SubMenu>
+                  )
+                } else {
+                  return (
+                    <SubMenu key={index} title={<span><Icon type={item.icon} /><span>{item.title}</span></span>}>
+                      <Menu.Item>暂无</Menu.Item>
+                    </SubMenu>
+                  )
+                }
+              })
+            }
+            </Menu>
+          </div>
+          <div className="right">
+            {this.state.isShowEnable ? tagList : ''}
+            <Route path="/home/hot" component={Hot}></Route>
+          </div>
         </div>
       </div>
     ) 
