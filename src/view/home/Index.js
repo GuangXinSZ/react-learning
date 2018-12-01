@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import Head from '../header/Index'
-import Hot from '../hot/Hot'
+import Router from '../../router/index'
 import '../../assets/home/home.scss'
 
 const SubMenu = Menu.SubMenu
@@ -35,8 +35,8 @@ class Index extends React.Component {
           icon: 'user', 
           isMenu: true,
           children: [
-              {id: 2, value: '会员用户'},
-              {id: 3, value: '普通用户'}
+              {id: 2, value: '会员用户', path: '/home/member'},
+              {id: 3, value: '普通用户', path: '/home/ordinarymember'}
             ]
           },
         {
@@ -44,7 +44,7 @@ class Index extends React.Component {
           icon: 'fire',
           isMenu: true,
           children: [
-            {id: 4, value: '全部'}
+            {id: 4, value: '全部', path: '/home/movie'}
           ]
         },
         {
@@ -52,7 +52,7 @@ class Index extends React.Component {
           icon: 'setting',
           isMenu: true,
           children: [
-            {id: 5, value: '权限设置', path: '/home'}
+            {id: 5, value: '权限设置', path: '/home/setting'}
           ]
         }
       ]
@@ -64,6 +64,9 @@ class Index extends React.Component {
 
     let enable = true
     let res = e.item.props.children
+
+    // 跳转路由
+    this.context.router.history.push(e.item.props.path)
 
     // 第一次添加不需要循环
     if (this.state.historyList != null) {
@@ -84,15 +87,13 @@ class Index extends React.Component {
     let list = this.state.historyList
 
     list.push({ title: res, path: e.item.props.path })
+
     this.setState({
       historyList: list,
       isShowEnable: true
     })
 
     enable = true
-
-    // 跳转路由
-    this.context.router.history.push(e.item.props.path)
     // 添加
     localStorage.setItem('histhist_key', JSON.stringify(list))
   }
@@ -185,7 +186,7 @@ class Index extends React.Component {
           </div>
           <div className="right">
             {this.state.isShowEnable ? tagList : ''}
-            <Route path="/home/hot" component={Hot}></Route>
+            <Router></Router>
           </div>
         </div>
       </div>
