@@ -1,6 +1,5 @@
 import React from 'react'
 import { Menu, Icon, Tag } from 'antd'
-import { Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import Head from '../header/Index'
@@ -100,7 +99,6 @@ class Index extends React.Component {
 
   deleteTag = (item, e) => {
     e.preventDefault()
-
     if (this.state.historyList.length === 1) {
       return
     }
