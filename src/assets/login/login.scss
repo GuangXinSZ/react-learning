@@ -5,6 +5,13 @@
   float: right;
 }
 
+.containers {
+  width: 100vw;
+  height: 100vh;
+  background: #f0f2f5 url(../img/background.svg) no-repeat 50%;
+  background-size: 100%;
+}
+
 .login {
   position: absolute;
   left: 0;
