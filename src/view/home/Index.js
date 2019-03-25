@@ -2,7 +2,6 @@ import React from 'react'
 import { Menu, Icon, Tag } from 'antd'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
-import Head from '../header/Index'
 import Router from '../../router/index'
 import '../../assets/home/home.scss'
 
@@ -22,36 +21,11 @@ class Index extends React.Component {
       isEnable: false,
       menuList: [
         {
-          title: '首页',
-          icon: 'github',
-          isMenu: true,
-          children: [
-            {id: 1, value: '影片统计', path: '/home/hot'}
-          ]
-        },
-        {
-          title: '用户',
-          icon: 'user', 
-          isMenu: true,
-          children: [
-              {id: 2, value: '会员用户', path: '/home/member'},
-              {id: 3, value: '普通用户', path: '/home/ordinarymember'}
-            ]
-          },
-        {
           title: '电影',
           icon: 'fire',
           isMenu: true,
           children: [
             {id: 4, value: '全部', path: '/home/movie'}
-          ]
-        },
-        {
-          title: '基本设置',
-          icon: 'setting',
-          isMenu: true,
-          children: [
-            {id: 5, value: '权限设置', path: '/home/setting'}
           ]
         }
       ]
@@ -148,7 +122,6 @@ class Index extends React.Component {
 
     return (
       <div>
-        <Head></Head>
         <div className="container">
           <div className="left">
             <Menu

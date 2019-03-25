@@ -15,7 +15,7 @@ class Movie extends React.Component{
   render () {
     return (
       <div>
-        全部
+        电影
       </div>
     )
   }
