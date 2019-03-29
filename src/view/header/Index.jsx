@@ -1,7 +1,9 @@
 import React from 'react'
+import { Icon } from 'antd'
+
 import '../../assets/index/header.scss'
 
-class Index extends React.Component {
+export default class Index extends React.Component {
   constructor () {
     super()
 
@@ -18,14 +20,18 @@ class Index extends React.Component {
     return (
       <div className="head">
         <div className="left">
-
+          <Icon type="windows"  style={style.iconColor}/>
+          后台管理系统
         </div>
-        <div className="right">
-
+        <div className="right" >
+          全屏
         </div>
       </div>
     ) 
   }
 }
 
-export default Index
+const style = {
+  bgColor: {background: '#001529', color: 'white'},
+  iconColor: { color: '#1890ff', marginRight: '10px' }
+}

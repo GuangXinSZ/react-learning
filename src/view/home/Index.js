@@ -1,8 +1,9 @@
 import React from 'react'
 import { Menu, Icon, Tag } from 'antd'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
+import HeaderBrand from '../header/Index'
 import Router from '../../router/index'
+import _ from 'lodash'
 import '../../assets/home/home.scss'
 
 const SubMenu = Menu.SubMenu
@@ -21,8 +22,56 @@ class Index extends React.Component {
       isEnable: false,
       menuList: [
         {
-          title: '电影',
-          icon: 'fire',
+          title: '统计',
+          icon: 'stock',
+          isMenu: true,
+          children: [
+            {id: 4, value: '全部', path: '/home/movie'}
+          ]
+        },
+        {
+          title: '管理员管理',
+          icon: 'user-delete',
+          isMenu: true,
+          children: [
+            {id: 4, value: '全部', path: '/home/movie'}
+          ]
+        },
+        {
+          title: '会员管理',
+          icon: 'twitter',
+          isMenu: true,
+          children: [
+            {id: 4, value: '全部', path: '/home/movie'}
+          ]
+        },
+        {
+          title: '产品管理',
+          icon: 'shopping',
+          isMenu: true,
+          children: [
+            {id: 4, value: '全部', path: '/home/movie'}
+          ]
+        },
+        {
+          title: '订单管理',
+          icon: 'wallet',
+          isMenu: true,
+          children: [
+            {id: 4, value: '全部', path: '/home/movie'}
+          ]
+        },
+        {
+          title: '网站设置',
+          icon: 'tool',
+          isMenu: true,
+          children: [
+            {id: 4, value: '全部', path: '/home/movie'}
+          ]
+        },
+        {
+          title: '商城管理',
+          icon: 'gateway',
           isMenu: true,
           children: [
             {id: 4, value: '全部', path: '/home/movie'}
@@ -111,30 +160,32 @@ class Index extends React.Component {
     const tagList = this.state.historyList.map((item, index) => {
       return (
         <Tag 
-        closable
-        onClick={this.jump.bind(this, item)} 
-        key={index} 
-        onClose={this.deleteTag.bind(this, item)}>
-        {item.title}
+          closable
+          onClick={this.jump.bind(this, item)} 
+          key={index} 
+          onClose={this.deleteTag.bind(this, item)}>
+          {item.title}
         </Tag>
         )
       })
 
     return (
       <div>
-        <div className="container">
+        <HeaderBrand></HeaderBrand>
+        <div className="container" >
           <div className="left">
             <Menu
               className="menu"
               onClick={this.handleClick}
-              style={{ width: 150 }}
               mode="inline"
+              theme="dark"
+              style={ style.headerTitle }
             >
             {
               this.state.menuList.map((item, index) => {
                 if (item.isMenu) {
                   return (
-                    <SubMenu key={index} title={<span><Icon type={item.icon} /><span>{item.title}</span></span>}>
+                    <SubMenu key={index} title={<span><Icon type={item.icon} style={style.iconColor} /><span>{item.title}</span></span>}>
                       {
                         item.children.map((el, key) => {
                           return (
@@ -163,6 +214,11 @@ class Index extends React.Component {
       </div>
     ) 
   }
+}
+
+const style = {
+  headerTitle: { width: '170px' },
+  iconColor: { color: '#1890ff' }
 }
 
 export default Index
