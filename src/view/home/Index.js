@@ -31,20 +31,21 @@ class Index extends React.Component {
         },
         {
           title: '管理员管理',
+          icon: 'twitter',
+          isMenu: true,
+          children: [
+            {id: 1 + 'p', value: '全部', path: '/home/mov'}
+          ]
+        },
+        {
+          title: '会员管理',
           icon: 'user-delete',
           isMenu: true,
           children: [
-            {id: 2, value: '会员管理', path: '/home/member'}
+            {id: 2, value: '会员管理', path: '/home/membermanage/member'},
+            {id: 3, value: '体现管理', path: '/home/membermanage/reflect'}
           ]
         },
-        // {
-        //   title: '会员管理',
-        //   icon: 'twitter',
-        //   isMenu: true,
-        //   children: [
-        //     {id: 4, value: '全部', path: '/home/movie'}
-        //   ]
-        // },
         // {
         //   title: '产品管理',
         //   icon: 'shopping',
