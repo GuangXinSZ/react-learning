@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import Movie from '../view/Movie/index'
+import Totail from '../view/Statistical/index.jsx'
+import MenberManage from '../view/MemberManage/index.jsx'
 
 class Router extends React.Component {
   constructor (props) {
@@ -13,7 +14,8 @@ class Router extends React.Component {
   render () {
     return (
       <div>
-        <Route path="/home/movie" component={Movie}></Route>
+        <Route path="/home/totail" component={Totail}></Route>
+        <Route path="/home/member" component={MenberManage}></Route>
       </div>
     )
   }

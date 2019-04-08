@@ -26,7 +26,7 @@ class Index extends React.Component {
           icon: 'stock',
           isMenu: true,
           children: [
-            {id: 4, value: '全部', path: '/home/movie'}
+            {id: 1, value: '全部', path: '/home/totail'}
           ]
         },
         {
@@ -34,49 +34,49 @@ class Index extends React.Component {
           icon: 'user-delete',
           isMenu: true,
           children: [
-            {id: 4, value: '全部', path: '/home/movie'}
+            {id: 2, value: '会员管理', path: '/home/member'}
           ]
         },
-        {
-          title: '会员管理',
-          icon: 'twitter',
-          isMenu: true,
-          children: [
-            {id: 4, value: '全部', path: '/home/movie'}
-          ]
-        },
-        {
-          title: '产品管理',
-          icon: 'shopping',
-          isMenu: true,
-          children: [
-            {id: 4, value: '全部', path: '/home/movie'}
-          ]
-        },
-        {
-          title: '订单管理',
-          icon: 'wallet',
-          isMenu: true,
-          children: [
-            {id: 4, value: '全部', path: '/home/movie'}
-          ]
-        },
-        {
-          title: '网站设置',
-          icon: 'tool',
-          isMenu: true,
-          children: [
-            {id: 4, value: '全部', path: '/home/movie'}
-          ]
-        },
-        {
-          title: '商城管理',
-          icon: 'gateway',
-          isMenu: true,
-          children: [
-            {id: 4, value: '全部', path: '/home/movie'}
-          ]
-        }
+        // {
+        //   title: '会员管理',
+        //   icon: 'twitter',
+        //   isMenu: true,
+        //   children: [
+        //     {id: 4, value: '全部', path: '/home/movie'}
+        //   ]
+        // },
+        // {
+        //   title: '产品管理',
+        //   icon: 'shopping',
+        //   isMenu: true,
+        //   children: [
+        //     {id: 4, value: '全部', path: '/home/movie'}
+        //   ]
+        // },
+        // {
+        //   title: '订单管理',
+        //   icon: 'wallet',
+        //   isMenu: true,
+        //   children: [
+        //     {id: 4, value: '全部', path: '/home/movie'}
+        //   ]
+        // },
+        // {
+        //   title: '网站设置',
+        //   icon: 'tool',
+        //   isMenu: true,
+        //   children: [
+        //     {id: 4, value: '全部', path: '/home/movie'}
+        //   ]
+        // },
+        // {
+        //   title: '商城管理',
+        //   icon: 'gateway',
+        //   isMenu: true,
+        //   children: [
+        //     {id: 4, value: '全部', path: '/home/movie'}
+        //   ]
+        // }
       ]
     }
   }

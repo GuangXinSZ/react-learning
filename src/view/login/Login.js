@@ -3,7 +3,7 @@ import { Form, Icon, Input, Button, Checkbox, message } from 'antd'
 import utils from '../../server/utils'
 import PropTypes from 'prop-types'
 import '../../assets/login/login.scss'
-import { login, getOrderInfo } from '.././../server/api'
+import { login } from '../../server/api'
 
 const FormItem = Form.Item
 
@@ -27,14 +27,8 @@ class Login extends React.Component {
       sessionStorage.setItem('access-user', JSON.stringify(ret.data.token));
 
       message.info('登录成功！')
-      this.initData()
-      // this.context.router.history.push('/home')
+      this.context.router.history.push('/home')
     }
-  }
-  initData = async () => {
-    let res = await getOrderInfo({
-      token: sessionStorage.getItem('access-user')
-    })
   }
 
   render () {
