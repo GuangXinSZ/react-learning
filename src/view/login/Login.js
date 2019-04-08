@@ -2,8 +2,8 @@ import React from 'react'
 import { Form, Icon, Input, Button, Checkbox, message } from 'antd'
 import utils from '../../server/utils'
 import PropTypes from 'prop-types'
-// import { browserHistory } from 'react-router'
 import '../../assets/login/login.scss'
+import { login, getOrderInfo } from '.././../server/api'
 
 const FormItem = Form.Item
 
@@ -21,17 +21,20 @@ class Login extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault()
-    try {
-      let res = await utils.checkFrom(this.props.form)
-      if (res) {
-        message.info('登录成功！')
-        this.context.router.history.push('/home')
-      }
+    let res = await utils.checkFrom(this.props.form)
+    if (res) {
+      let ret = await login({ phone: 11, password: 123456 })
+      sessionStorage.setItem('access-user', JSON.stringify(ret.data.token));
 
-      console.log(res)
-    } catch (err) {
-      console.log(err)
+      message.info('登录成功！')
+      this.initData()
+      // this.context.router.history.push('/home')
     }
+  }
+  initData = async () => {
+    let res = await getOrderInfo({
+      token: sessionStorage.getItem('access-user')
+    })
   }
 
   render () {
