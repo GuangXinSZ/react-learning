@@ -52,10 +52,10 @@ class Index extends React.Component {
           icon: 'shopping',
           isMenu: true,
           children: [
-            {id: 1 + 'a', value: '国家管理', path: '/home/movie'},
-            {id: 2 + 'a', value: '国家管理', path: '/home/movie'},
-            {id: 3 + 'a', value: '国家管理', path: '/home/movie'},
-            {id: 4 + 'a', value: '国家管理', path: '/home/movie'},
+            {id: 1 + 'a', value: '国家管理', path: '/home/product/country'},
+            {id: 2 + 'a', value: '分类管理', path: '/home/product/cageory'},
+            {id: 3 + 'a', value: '产品管理', path: '/home/product/product'},
+            {id: 4 + 'a', value: '库存管理', path: '/home/product/inventory'},
           ]
         },
         // {
