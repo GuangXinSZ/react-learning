@@ -12,7 +12,8 @@ import Inventory from '../view/AdminProduct/Inventory/index'
 import OrderList from '../view/AdminOrder/OrderList/index'
 import Service from '../view/AdminOrder/Service/index'
 import Invioce from '../view/AdminOrder/Invoice/index'
-
+import AdminShop from '../view/AdminShop/index'
+import MenuSetting from '../view/WebSetting/MenuSetting/index'
 
 class Router extends React.Component {
   constructor (props) {
@@ -41,6 +42,10 @@ class Router extends React.Component {
         <Route path="/home/order/order" component={OrderList}></Route>
         <Route path="/home/order/service" component={Service}></Route>
         <Route path="/home/order/invioce" component={Invioce}></Route>
+        {/* 店铺管理 */}
+        <Route path="/home/shop/shop" component={AdminShop}></Route>
+        {/* 网站管理 */}
+        <Route path="/home/web/menu" component={MenuSetting}></Route>
       </div>
     )
   }
