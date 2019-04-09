@@ -34,7 +34,8 @@ class Index extends React.Component {
           icon: 'twitter',
           isMenu: true,
           children: [
-            {id: 1 + 'p', value: '全部', path: '/home/mov'}
+            {id: 1 + 'p', value: '管理员列表', path: '/home/admin/admin'},
+            {id: 2 + 'p', value: '操作日志', path: '/home/admin/operation'},
           ]
         },
         {
@@ -43,17 +44,20 @@ class Index extends React.Component {
           isMenu: true,
           children: [
             {id: 2, value: '会员管理', path: '/home/membermanage/member'},
-            {id: 3, value: '体现管理', path: '/home/membermanage/reflect'}
+            {id: 3, value: '提现管理', path: '/home/membermanage/reflect'}
           ]
         },
-        // {
-        //   title: '产品管理',
-        //   icon: 'shopping',
-        //   isMenu: true,
-        //   children: [
-        //     {id: 4, value: '全部', path: '/home/movie'}
-        //   ]
-        // },
+        {
+          title: '产品管理',
+          icon: 'shopping',
+          isMenu: true,
+          children: [
+            {id: 1 + 'a', value: '国家管理', path: '/home/movie'},
+            {id: 2 + 'a', value: '国家管理', path: '/home/movie'},
+            {id: 3 + 'a', value: '国家管理', path: '/home/movie'},
+            {id: 4 + 'a', value: '国家管理', path: '/home/movie'},
+          ]
+        },
         // {
         //   title: '订单管理',
         //   icon: 'wallet',

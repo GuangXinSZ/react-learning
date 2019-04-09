@@ -1,5 +1,5 @@
 
 export default {
-  // server: 'https://apitest.scarlet-bar.com',
+  server: 'https://apitest.scarlet-bar.com',
   wxDebug: false
 }
