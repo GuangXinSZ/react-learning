@@ -58,20 +58,22 @@ class Index extends React.Component {
             {id: 4 + 'a', value: '库存管理', path: '/home/product/inventory'},
           ]
         },
-        // {
-        //   title: '订单管理',
-        //   icon: 'wallet',
-        //   isMenu: true,
-        //   children: [
-        //     {id: 4, value: '全部', path: '/home/movie'}
-        //   ]
-        // },
+        {
+          title: '订单管理',
+          icon: 'wallet',
+          isMenu: true,
+          children: [
+            {id: 1 + 'b', value: '订单列表', path: '/home/order/order'},
+            {id: 2 + 'b', value: '售后管理', path: '/home/order/service'},
+            {id: 3 + 'b', value: '发票管理', path: '/home/order/invioce'},
+          ]
+        },
         // {
         //   title: '网站设置',
         //   icon: 'tool',
         //   isMenu: true,
         //   children: [
-        //     {id: 4, value: '全部', path: '/home/movie'}
+        //     {id: 4, value: '全部', path: '/home/order/'}
         //   ]
         // },
         // {
