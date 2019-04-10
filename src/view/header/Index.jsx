@@ -62,7 +62,7 @@ export default class Index extends React.Component {
               <Icon type="fullscreen" style={style.iconColor}/>
             </Tooltip>
             <div>
-              2
+              {/* 2 */}
             </div>
           </div>
         </div>

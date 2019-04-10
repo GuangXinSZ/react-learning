@@ -10,7 +10,14 @@
   }
 
   .right {
-    margin: 0.8rem;
     flex: 1;
   }
+}
+
+.bg-on {
+  background: rgba(255, 255, 0, 0.3) !important
+}
+
+.bg-off {
+  color: red;
 }

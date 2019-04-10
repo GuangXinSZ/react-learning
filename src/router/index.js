@@ -26,7 +26,7 @@ class Router extends React.Component {
   render () {
     return (
       <div>
-        <Route path="/home/totail" component={Totail}></Route>
+        <Route exact path="/home/totail" component={Totail}></Route>
         {/* 管理员管理 */}
         <Route path="/home/admin/admin" component={AdminList}></Route>
         <Route path="/home/admin/operation" component={Operation}></Route>

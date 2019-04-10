@@ -93,7 +93,6 @@ class Index extends React.Component {
 
     let enable = true
     let res = e.item.props.children
-
     // 跳转路由
     this.context.router.history.push(e.item.props.path)
 
@@ -111,12 +110,16 @@ class Index extends React.Component {
         enable = false
       }
     }
-
     if (!enable) { return }
     let list = this.state.historyList
 
-    list.push({ title: res, path: e.item.props.path })
-
+    // 清空其它
+    if (list.length > 0) {
+      list.forEach((item, index) => {
+        item.active = false
+      })
+    }
+    list.push({ title: res, path: e.item.props.path, active: true })
     this.setState({
       historyList: list,
       isShowEnable: true
@@ -156,7 +159,13 @@ class Index extends React.Component {
       })
       return
     }
-
+    let aloneMenu = _.chain(this.state.menuList)
+      .map((item) => {
+        return item.children
+      })
+      .head()
+      .value()
+    
     this.setState({
       historyList: historyList,
       isShowEnable: true
@@ -168,6 +177,8 @@ class Index extends React.Component {
       return (
         <Tag 
           closable
+          className={item.active ? 'bg-on': 'bg-off'}
+          style={ style.menuIcon }
           onClick={this.jump.bind(this, item)} 
           key={index} 
           onClose={this.deleteTag.bind(this, item)}>
@@ -225,7 +236,8 @@ class Index extends React.Component {
 
 const style = {
   headerTitle: { width: '170px' },
-  iconColor: { color: '#1890ff' }
+  iconColor: { color: '#1890ff' },
+  menuIcon: { height: "34px", marginRight: "0px", lineHeight: "32px", borderRadius: 0}
 }
 
 export default Index
