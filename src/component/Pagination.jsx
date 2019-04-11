@@ -49,7 +49,7 @@ class Page extends React.Component{
 
   render () {
     return (
-      <div>
+      <div style={style.page}>
         <Pagination 
           size="small"
           total={this.props.totail} 
@@ -63,6 +63,10 @@ class Page extends React.Component{
       </div>
     )
   }
+}
+
+const style = {
+  page: {marginTop: '20px'}
 }
 
 export default Page
