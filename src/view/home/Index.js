@@ -90,7 +90,7 @@ class Index extends React.Component {
 
   handleClick = (e) => {
     if (e.item.props.path === undefined) { return }
-
+    let list = this.state.historyList
     let enable = true
     let res = e.item.props.children
     // 跳转路由
@@ -98,20 +98,30 @@ class Index extends React.Component {
 
     // 第一次添加不需要循环
     if (this.state.historyList != null) {
-      let ret = _
-        .chain(this.state.historyList)
+      let ret = _.chain(this.state.historyList)
         .map((o) => {
           return o.title
         })
         .includes(res)
         .value()
+      list = _.map(list, (item) => {
+        item.active = false
+        return item
+      })
+      list.forEach((item, index) => {
+        if (item.title === res) {
+          item.active = true
+        }
+      })
 
+      this.setState({
+        historyList: list,
+      })
       if (ret) {
         enable = false
       }
     }
     if (!enable) { return }
-    let list = this.state.historyList
 
     // 清空其它
     if (list.length > 0) {
@@ -119,6 +129,7 @@ class Index extends React.Component {
         item.active = false
       })
     }
+
     list.push({ title: res, path: e.item.props.path, active: true })
     this.setState({
       historyList: list,
@@ -144,7 +155,22 @@ class Index extends React.Component {
     localStorage.setItem('histhist_key', JSON.stringify(list))
   }
 
-  jump = (item, e) => {
+  jump = (item) => {
+    let list = this.state.historyList
+
+    // 先清空其它bg-on
+    list = _.map(list, (item) => {
+      item.active = false
+      return item
+    })
+
+    // 当前index选上
+    list.forEach((ele) => {
+      if (ele.title === item.title) {
+        ele.active = true
+      }
+    })
+
     this.context.router.history.push(item.path)
   }
 
