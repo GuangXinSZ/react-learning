@@ -38,13 +38,13 @@ class Page extends React.Component{
   // current 变化的回调
   handleCurrentChange = async (current, size) => {
     await this.setState({
-      page: current
+      pageSize: size
     })
     this.fetchDataByPage()
   }
 
-  componentDidMount () {
-    this.fetchDataByPage()
+  async componentDidMount () {
+    await this.fetchDataByPage()
   }
 
   render () {
