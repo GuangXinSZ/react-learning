@@ -170,7 +170,7 @@ class Index extends React.Component {
         ele.active = true
       }
     })
-
+    localStorage.setItem('histhist_key', JSON.stringify(list))
     this.context.router.history.push(item.path)
   }
 
@@ -185,12 +185,12 @@ class Index extends React.Component {
       })
       return
     }
-    let aloneMenu = _.chain(this.state.menuList)
-      .map((item) => {
-        return item.children
-      })
-      .head()
-      .value()
+    // let aloneMenu = _.chain(this.state.menuList)
+    //   .map((item) => {
+    //     return item.children
+    //   })
+    //   .head()
+    //   .value()
     
     this.setState({
       historyList: historyList,

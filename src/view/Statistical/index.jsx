@@ -1,12 +1,17 @@
 import React from 'react'
+import Page from '../../component/Pagination'
 
 class Movie extends React.Component{
   constructor(props) {
     super(props)
 
     this.state = {
-
+      totail: 50
     }
+  }
+
+  fetchData = (params) => {
+    console.log(params)
   }
 
   componentWillMount () {
@@ -15,7 +20,7 @@ class Movie extends React.Component{
   render () {
     return (
       <div>
-        统计
+        <Page fetchData={this.fetchData} totail={this.state.totail}></Page>
       </div>
     )
   }

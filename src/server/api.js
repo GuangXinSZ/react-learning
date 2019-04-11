@@ -20,6 +20,10 @@ authApi.interceptors.response.use( async (response) => {
     token = user
   }
   authApi.defaults.headers.common['token'] = token
+  // 代表未登录 那么就要跳转到首页
+  if (response.data.code === -3) { 
+
+  }
   return response
 }, function (error) {
   return Promise.reject(error)
