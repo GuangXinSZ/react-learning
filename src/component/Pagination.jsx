@@ -1,3 +1,10 @@
+
+/**
+ * author:: liuGuangXin
+ * date:: 2019/4/11
+ * introduce:: 基于react-ant 二次封装分页组件
+ * use:: 传入一个回调的方法 fetchData 总数量
+ */
 import React from 'react'
 import { Pagination } from 'antd'
 
