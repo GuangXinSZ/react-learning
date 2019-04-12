@@ -76,15 +76,17 @@ class Movie extends React.Component{
       this.setState({
         orderInfo: res.data.data
       })
+      this.canvasPre()
     } catch (err) {
     }
   }
 
-  componentWillMount () {
-    this.initData()
+  async componentWillMount () {
+    await this.initData()
   }
-  componentDidMount() {
-    var myChart = echarts.init(document.getElementById('main'))
+  canvasPre = () => {
+    let  myChart = echarts.init(document.getElementById('main'))
+    let info = this.state.orderInfo
     myChart.setOption({
       series : [
         {
@@ -99,7 +101,7 @@ class Movie extends React.Component{
             shadowColor: 'rgba(0, 0, 0, 0.5)'
           },
           data:[
-            {value: 235, name: '7天下单总数'},
+            {value: info.sevenOrderCount, name: `7天下单总数${info.sevenOrderCount}`},
             {value: 310, name: '已支付订单'},
             {value: 335, name: '代付款'},
             {value: 400, name: '代发货'}
@@ -107,6 +109,8 @@ class Movie extends React.Component{
         }
       ]
     })
+  }
+  componentDidMount() {
   }
 
   render () {
@@ -134,7 +138,7 @@ const style = {
   content: {padding: '20rpx', display: 'flex'},
   left: {padding: '30px',flex: 1},
   tableItem: {width: "40%"},
-  Table: { padding: '30px', width: "100%", display: 'flex', flexDirection: 'column', alignItems: "center"}
+  Table: {padding: '30px', width: "80%", display: 'flex', flexDirection: 'column', alignItems: "center"}
 }
 
 export default Movie
