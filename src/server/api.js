@@ -34,4 +34,5 @@ authApi.interceptors.response.use( async (response) => {
 // 登录项
 export const login = (params) => authApi.post('/admin/login.action', qs.stringify(params))
 export const getOrderInfo = (params) => authApi.post('/admin/order!info.action', qs.stringify(params))
+export const salePlateInfo = (params) => authApi.post('/admin/sale!plateinfo.action', qs.stringify(params)) 
 
