@@ -1,9 +1,13 @@
 import React from 'react'
 import Page from '../../component/Pagination'
-import { salePlateInfo } from '../../server/api'
+import { salePlateInfo, getOrderInfo } from '../../server/api'
 import { Table } from 'antd'
 import _ from 'lodash'
 import moment from 'moment'
+import echarts from 'echarts/lib/echarts'
+import 'echarts/lib/chart/pie'
+import 'echarts/lib/component/tooltip'
+import 'echarts/lib/component/title'
 
 class Movie extends React.Component{
   constructor(props) {
@@ -11,6 +15,7 @@ class Movie extends React.Component{
 
     this.state = {
       totail: 50,
+      orderInfo: null,
       saleList: [],
       columns: [
         {
@@ -63,15 +68,52 @@ class Movie extends React.Component{
     }
   }
 
+  initData = async () => {
+    try {
+      let res = await getOrderInfo({
+        token: sessionStorage.getItem('access-user')
+      })
+      this.setState({
+        orderInfo: res.data.data
+      })
+    } catch (err) {
+    }
+  }
+
   componentWillMount () {
+    this.initData()
+  }
+  componentDidMount() {
+    var myChart = echarts.init(document.getElementById('main'))
+    myChart.setOption({
+      series : [
+        {
+          name: '访问来源',
+          type: 'pie',
+          radius: '55%',
+          roseType: 'angle',
+          itemStyle: {
+            shadowBlur: 40,
+            shadowOffsetX: 0,
+            shadowOffsetY: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          },
+          data:[
+            {value: 235, name: '7天下单总数'},
+            {value: 310, name: '已支付订单'},
+            {value: 335, name: '代付款'},
+            {value: 400, name: '代发货'}
+          ]
+        }
+      ]
+    })
   }
 
   render () {
-    
     return (
       <div style={style.content}>
         <div style={style.left}>
-          111
+          <div id="main" style={{ width: 600, height: 600 }} ref="pieChart"></div>
         </div>
         <div style={style.Table}>
           <Table
